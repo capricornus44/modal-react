@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useCallback, useEffect } from "react"
 import styled from "styled-components"
 import { MdClose } from "react-icons/md"
 import image from "../assets/modal-image.jpg"
@@ -60,10 +60,16 @@ const CloseModalButton = styled(MdClose)`
 `
 
 const Modal = ({ isModalShown, setIsModalShown }) => {
+  const modalRef = useRef()
+
+  const closeModal = (e) => {
+    if (modalRef.current === e.target) setIsModalShown(!isModalShown)
+  }
+
   return (
     <>
       {isModalShown && (
-        <Backdrop>
+        <Backdrop ref={modalRef} onClick={closeModal}>
           <ModalWrapper isModalShown={isModalShown}>
             <ModalImage src={image} alt="laptop" />
             <ModalContent>
