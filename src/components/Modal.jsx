@@ -1,7 +1,16 @@
 import React, { useRef, useCallback, useEffect } from "react"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { MdClose } from "react-icons/md"
 import image from "../assets/modal-image.jpg"
+
+const slideIn = keyframes`
+  0% {
+    transform: translateX(1000px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`
 
 const Backdrop = styled.div`
   position: fixed;
@@ -22,6 +31,7 @@ const ModalWrapper = styled.div`
   color: #ffffff;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   z-index: 5;
+  animation: 0.3s ${slideIn} ease-out;
 `
 
 const ModalImage = styled.img`
