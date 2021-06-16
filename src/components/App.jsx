@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
+
+import Modal from "./Modal"
 
 const Container = styled.div`
   display: flex;
@@ -22,12 +24,23 @@ const Button = styled.button`
   color: #ffffff;
   background-image: linear-gradient(to right, #3f51b5, #e2229c, #fd0cb2);
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `
 
 const App = () => {
+  const [isModalShown, setIsModalShown] = useState(false)
+
+  const openModal = () => {
+    setIsModalShown(!isModalShown)
+  }
+
   return (
     <Container>
-      <Button>Open the Modal</Button>
+      <Button onClick={openModal}>Open the Modal</Button>
+      <Modal isModalShown={isModalShown} setIsModalShown={setIsModalShown} />
     </Container>
   )
 }
