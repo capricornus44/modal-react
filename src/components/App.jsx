@@ -9,14 +9,13 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: linear-gradient(225deg, #454545, #212121);
 `
 
 const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 3rem;
   padding: 0 1.5rem;
   border-radius: 0.625rem;
   border: none;
@@ -27,7 +26,7 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    opacity: 0.8;
+    background-image: linear-gradient(to right, #fd0cb2, #e2229c, #3f51b5);
   }
 `
 
@@ -40,7 +39,7 @@ const App = () => {
 
   return (
     <Container>
-      <Button onClick={openModal}>Open the Modal</Button>
+      <Button onClick={openModal}>Open Modal</Button>
       <Modal isModalShown={isModalShown} setIsModalShown={setIsModalShown} />
       <GlobalStyle />
     </Container>
