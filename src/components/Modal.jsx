@@ -66,6 +66,18 @@ const Modal = ({ isModalShown, setIsModalShown }) => {
     if (modalRef.current === e.target) setIsModalShown(!isModalShown)
   }
 
+  const keyPress = useCallback(
+    (e) => {
+      if (e.key === "Escape" && isModalShown) setIsModalShown(!isModalShown)
+    },
+    [isModalShown, setIsModalShown]
+  )
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyPress)
+    return () => document.removeEventListener("keydown", keyPress)
+  }, [keyPress])
+
   return (
     <>
       {isModalShown && (
